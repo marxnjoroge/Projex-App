@@ -18,12 +18,12 @@ if title == "Bitcoin: BTC":
     st.write("""Using Getblock's Blockchain Node Provider for access to BTC network and data.""")
     st.write("""**Note:** Data returned from API calls are chain-specific.""")
 
-    
+    X_API_TOKEN = st.secrets["GETBLOCK_BTC_TOKEN"]
     headers = {
-        "X-API-TOKEN": st.secrets["GETBLOCK_BTC_TOKEN"],
+        "X-API-TOKEN": X_API_TOKEN,
     }
-    X-API-TOKEN = st.secrets["GETBLOCK_BTC_TOKEN"]
-    btc_status_endpoint = "https://go.getblock.io/"+X-API-TOKEN
+    
+    btc_status_endpoint = "https://go.getblock.io/"+X_API_TOKEN
 
     def get_latest_block():
 

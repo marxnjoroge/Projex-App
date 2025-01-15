@@ -216,7 +216,6 @@ pg = st.navigation(
         "Tools": [AI_Assistant, Blockchain_Explorer, Sort_Visualizer],       
       }
     )
-
 pg.run()
 
 with sidebar:
