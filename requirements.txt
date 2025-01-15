@@ -71,6 +71,7 @@ pytz-deprecation-shim==0.1.0.post0
 pyzmq==22.3.0
 requests==2.27.0
 Send2Trash==1.8.0
+setuptools==75.8.0
 setuptools-scm==8.1.0
 six==1.16.0
 smmap==5.0.0
