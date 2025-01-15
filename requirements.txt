@@ -58,7 +58,7 @@ prompt-toolkit==3.0.22
 protobuf==3.20.1
 pyarrow==6.0.1
 pycparser==2.21
-pydeck==0.7.1
+pydeck==0.8.1
 Pygments==2.10.0
 Pympler==0.9
 pyparsing==3.0.6
@@ -155,7 +155,6 @@ prometheus-client==0.12.0
 prompt-toolkit==3.0.22
 pyarrow==6.0.1
 pycparser==2.21
-pydeck==0.7.1
 Pygments==2.10.0
 Pympler==0.9
 pyparsing==3.0.6
