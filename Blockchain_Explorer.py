@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st # type: ignore
 import pandas as pd
 import requests as rq
 import random
@@ -18,11 +18,12 @@ if title == "Bitcoin: BTC":
     st.write("""Using Getblock's Blockchain Node Provider for access to BTC network and data.""")
     st.write("""**Note:** Data returned from API calls are chain-specific.""")
 
-    btc_status_endpoint = "https://go.getblock.io/87019a5fbce44a89b6298ec30fad763c"
+    
     headers = {
         "X-API-TOKEN": st.secrets["GETBLOCK_BTC_TOKEN"],
     }
-
+    X-API-TOKEN = st.secrets["GETBLOCK_BTC_TOKEN"]
+    btc_status_endpoint = "https://go.getblock.io/"+X-API-TOKEN
 
     def get_latest_block():
 
