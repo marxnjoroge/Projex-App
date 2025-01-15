@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+    <rect x="10" y="10" width="380" height="80" fill="#F7FAFC"/>
+    <path d="M20,20 l20,0 l0,60 l-20,0" stroke="#2B6CB0" fill="none" stroke-width="4"/>
+    <path d="M380,20 l-20,0 l0,60 l20,0" stroke="#2B6CB0" fill="none" stroke-width="4"/>
+    <text x="40" y="65" font-family="Arial, sans-serif" font-weight="700" font-size="42">
+      <tspan fill="#2C5282">PRO</tspan><tspan fill="#2B6CB0">JEX</tspan>
+    </text>
+    <line x1="40" y1="75" x2="360" y2="75" stroke="#2B6CB0" stroke-width="2"/>
+</svg>

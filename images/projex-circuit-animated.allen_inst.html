@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .logo-container {
+      width: 400px;
+      height: 100px;
+      position: relative;
+      background: white;
+      overflow: hidden;
+    }
+    
+    .background-rect {
+      width: 380px;
+      height: 80px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background: #1A365D;
+      overflow: hidden;
+    }
+    
+    .circuit-line {
+      position: absolute;
+      background: #4299E1;
+      opacity: 0.2;
+    }
+    
+    .horizontal {
+      height: 1px;
+      width: 100%;
+      animation: glowH 4s infinite;
+    }
+    
+    .vertical {
+      width: 1px;
+      height: 100%;
+      animation: glowV 4s infinite;
+    }
+    
+    .h1 { top: 10px; animation-delay: 0s; }
+    .h2 { top: 40px; animation-delay: 1s; }
+    .h3 { top: 70px; animation-delay: 2s; }
+    
+    .v1 { left: 40px; animation-delay: 0.5s; }
+    .v2 { left: 140px; animation-delay: 1.5s; }
+    .v3 { left: 240px; animation-delay: 2.5s; }
+    .v4 { left: 340px; animation-delay: 3.5s; }
+    
+    .text {
+      position: absolute;
+      left: 40px;
+      top: 35px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 42px;
+      z-index: 2;
+    }
+    
+    .text-pro {
+      color: #E2E8F0;
+      animation: pulse 4s infinite;
+    }
+    
+    .text-jex {
+      color: #90CDF4;
+      animation: pulse 4s infinite;
+      animation-delay: 2s;
+    }
+    
+    .circle {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 25px;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    .circle1 {
+      right: 70px;
+      background: #90CDF4;
+      animation: pulse 4s infinite;
+    }
+    
+    .circle2 {
+      right: 40px;
+      background: #E2E8F0;
+      animation: pulse 4s infinite;
+      animation-delay: 2s;
+    }
+    
+    .data-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #4299E1;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: moveParticle 6s infinite linear;
+    }
+    
+    .p1 { top: 10px; left: -4px; animation-delay: 0s; }
+    .p2 { top: 40px; left: -4px; animation-delay: 2s; }
+    .p3 { top: 70px; left: -4px; animation-delay: 4s; }
+    
+    @keyframes glowH {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.3; }
+    }
+    
+    @keyframes glowV {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.3; }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes moveParticle {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(380px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <div class="background-rect">
+      <!-- Circuit grid -->
+      <div class="circuit-line horizontal h1"></div>
+      <div class="circuit-line horizontal h2"></div>
+      <div class="circuit-line horizontal h3"></div>
+      <div class="circuit-line vertical v1"></div>
+      <div class="circuit-line vertical v2"></div>
+      <div class="circuit-line vertical v3"></div>
+      <div class="circuit-line vertical v4"></div>
+      
+      <!-- Moving data particles -->
+      <div class="data-particle p1"></div>
+      <div class="data-particle p2"></div>
+      <div class="data-particle p3"></div>
+    </div>
+    
+    <div class="text">
+      <span class="text-pro">PRO</span><span class="text-jex">JEX</span>
+    </div>
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+  </div>
+</body>
+</html>
