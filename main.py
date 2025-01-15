@@ -4,6 +4,8 @@ import requests as rq
 import streamlit.components.v1 as components
 from datetime import datetime as dt, timedelta
 
+st.set_page_config(page_title=None, page_icon=None, layout="centered", initial_sidebar_state="auto", menu_items=None)
+
 # Page configuration
 st.title = "Projex"
 
@@ -31,7 +33,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # HTML for the animated logo with a function to scale it
-def get_logo_html(scale_percentage=100, background="white"):
+def get_logo_html(scale_percentage=100, background="transparent"):
     width = int(400 * scale_percentage / 100)
     height = int(100 * scale_percentage / 100)
     font_size = int(46 * scale_percentage / 100)

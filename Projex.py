@@ -5,12 +5,6 @@ from datetime import datetime as dt, timedelta
 # Page configuration
 st.title = "Projex"
 
-# # Create a container for better alignment control
-# st.markdown('<div class="logo-wrapper">', unsafe_allow_html=True)
-# # Render the full-size animated logo
-# components.html(get_logo_html(scale_percentage=100), height=120)
-# st.markdown('</div>', unsafe_allow_html=True)
-
 st.write("Welcome to Projex, a platform showcasing innovative projects that push the boundaries of technology and innovation. As hiring managers, you're likely looking for talented individuals who can bring cutting-edge skills and expertise to your team. This project website is designed to give you a glimpse into the exciting work being done by our developers, and to help you identify top talent who can drive your organization forward.")
 
 st.write("On this website, you'll find three distinct projects that demonstrate our team's capabilities in various areas of technology:")

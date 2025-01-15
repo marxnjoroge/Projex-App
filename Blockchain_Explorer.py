@@ -319,127 +319,127 @@ if title == "Ethereum: ETH":
 #     st.dataframe(df)
 #     #st.json(latest_blocks)
 
-# if title == "Binance Smart Chain: BNB":
+if title == "Binance Smart Chain: BNB":
 
-#     st.image("images/330px-Binance_logo.svg.png", width=250)
-#     st.subheader(f"Binance Smart Chain (BNB): Ethereum RPC API")
-#     st.write("""Using Getblock's Blockchain Node Provider for access to Binance Smart Chain network and data.""")
-#     st.write("""**Note:** Data returned from API calls are chain-specific.""")
+    st.image("images/330px-Binance_logo.svg.png", width=250)
+    st.subheader(f"Binance Smart Chain (BNB): Ethereum RPC API")
+    st.write("""Using Getblock's Blockchain Node Provider for access to Binance Smart Chain network and data.""")
+    st.write("""**Note:** Data returned from API calls are chain-specific.""")
 
-#     GETBLOCK_BSC_TOKEN = st.secrets["GETBLOCK_BSC_TOKEN"]
-#     GETBLOCK_BSC_URL = "https://go.getblock.io/"+GETBLOCK_BSC_TOKEN
+    GETBLOCK_BSC_TOKEN = st.secrets["GETBLOCK_BSC_TOKEN"]
+    GETBLOCK_BSC_URL = "https://go.getblock.io/"+GETBLOCK_BSC_TOKEN
 
-#     bsc_headers = {
-#         "X-API-KEY": GETBLOCK_BSC_TOKEN,
-#         "Content-Type": "application/json"
-#     }
+    bsc_headers = {
+        "X-API-KEY": GETBLOCK_BSC_TOKEN,
+        "Content-Type": "application/json"
+    }
 
-#     blocknumber = []
-#     timestamp = []
-#     size = []
-#     blockhash = []
-#     gasLimit = []
-#     gasUsed = []
-#     miner = []
+    blocknumber = []
+    timestamp = []
+    size = []
+    blockhash = []
+    gasLimit = []
+    gasUsed = []
+    miner = []
 
-#     latest_blocks = []
-#     curr_block_num = "latest"
+    latest_blocks = []
+    curr_block_num = "latest"
 
-#     num_bsc_params = {
-#         "id": "binance",
-#         "jsonrpc": "2.0",
-#         "method": "eth_getBlockByNumber",
-#         "params": [curr_block_num, True]
-#     }
-#     num_bsc_blockdata = rq.post(url=GETBLOCK_BSC_URL, json=num_bsc_params, headers=bsc_headers).json()
+    num_bsc_params = {
+        "id": "binance",
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [curr_block_num, True]
+    }
+    num_bsc_blockdata = rq.post(url=GETBLOCK_BSC_URL, json=num_bsc_params, headers=bsc_headers).json()
 
-#     curr_block_hash = num_bsc_blockdata['result']['hash']
-#     curr_txs_hash = []
-#     # print(curr_block_hash)
+    curr_block_hash = num_bsc_blockdata['result']['hash']
+    curr_txs_hash = []
+    # print(curr_block_hash)
 
-#     for i in range(0, 10):
-#         hash_bsc_params = {
-#             "id": "binance",
-#             "jsonrpc": "2.0",
-#             "method": "eth_getBlockByHash",
-#             "params": [curr_block_hash, True]
-#         }
+    for i in range(0, 10):
+        hash_bsc_params = {
+            "id": "binance",
+            "jsonrpc": "2.0",
+            "method": "eth_getBlockByHash",
+            "params": [curr_block_hash, True]
+        }
 
-#         hash_bsc_blockdata = rq.post(url=GETBLOCK_BSC_URL, json=hash_bsc_params, headers=bsc_headers).json()
-#         # print(hash_bsc_blockdata)
-#         new_block = {'blocknumber': hash_bsc_blockdata['result']['number'],
-#                         'timestamp': hash_bsc_blockdata['result']['timestamp'],
-#                         'size': hash_bsc_blockdata['result']['size'],
-#                         'blockhash': hash_bsc_blockdata['result']['hash'],
-#                         'gasLimit': hash_bsc_blockdata['result']['gasLimit'],
-#                         'gasUsed': hash_bsc_blockdata['result']['gasUsed'],
-#                         'miner': hash_bsc_blockdata['result']['miner']}
+        hash_bsc_blockdata = rq.post(url=GETBLOCK_BSC_URL, json=hash_bsc_params, headers=bsc_headers).json()
+        # print(hash_bsc_blockdata)
+        new_block = {'blocknumber': hash_bsc_blockdata['result']['number'],
+                        'timestamp': hash_bsc_blockdata['result']['timestamp'],
+                        'size': hash_bsc_blockdata['result']['size'],
+                        'blockhash': hash_bsc_blockdata['result']['hash'],
+                        'gasLimit': hash_bsc_blockdata['result']['gasLimit'],
+                        'gasUsed': hash_bsc_blockdata['result']['gasUsed'],
+                        'miner': hash_bsc_blockdata['result']['miner']}
 
-#         latest_blocks.append(new_block)
-#         if i == 0:
-#             curr_txs_hash.append(hash_bsc_blockdata['result']['transactions'][:20])
-#         curr_block_hash = hash_bsc_blockdata['result']['parentHash']
+        latest_blocks.append(new_block)
+        if i == 0:
+            curr_txs_hash.append(hash_bsc_blockdata['result']['transactions'][:20])
+        curr_block_hash = hash_bsc_blockdata['result']['parentHash']
 
-#     dec_blocks = []
-#     for dc in latest_blocks:
-#         dc['blocknumber'] = int(dc['blocknumber'], 16)
-#         dc['timestamp'] = int(dc['timestamp'], 16)
-#         dc['size'] = int(dc['size'], 16)
-#         dc['gasLimit'] = int(dc['gasLimit'], 16)
-#         dc['gasUsed'] = int(dc['gasUsed'], 16)
-#         blocknumber.append(dc['blocknumber'])
-#         timestamp.append(dt.fromtimestamp(dc['timestamp']).strftime('%Y.%m.%d %H:%M:%S'))
-#         size.append(dc['size'])
-#         blockhash.append(dc['blockhash'])
-#         gasLimit.append(dc['gasLimit'])
-#         gasUsed.append(dc['gasUsed'])
-#         miner.append(dc['miner'])
+    dec_blocks = []
+    for dc in latest_blocks:
+        dc['blocknumber'] = int(dc['blocknumber'], 16)
+        dc['timestamp'] = int(dc['timestamp'], 16)
+        dc['size'] = int(dc['size'], 16)
+        dc['gasLimit'] = int(dc['gasLimit'], 16)
+        dc['gasUsed'] = int(dc['gasUsed'], 16)
+        blocknumber.append(dc['blocknumber'])
+        timestamp.append(dt.fromtimestamp(dc['timestamp']).strftime('%Y.%m.%d %H:%M:%S'))
+        size.append(dc['size'])
+        blockhash.append(dc['blockhash'])
+        gasLimit.append(dc['gasLimit'])
+        gasUsed.append(dc['gasUsed'])
+        miner.append(dc['miner'])
 
-#         dec_blocks.append(dc)
+        dec_blocks.append(dc)
 
-#     df = pd.DataFrame(columns=['blocknumber', 'timestamp', 'size', 'blockhash', 'gasLimit', 'gasUsed', 'miner'])
-#     df['blocknumber'] = blocknumber
-#     df['timestamp'] = timestamp
-#     df['size'] = size
-#     df['blockhash'] = blockhash
-#     df['gasLimit'] = gasLimit
-#     df['gasUsed'] = gasUsed
-#     df['miner'] = miner
+    df = pd.DataFrame(columns=['blocknumber', 'timestamp', 'size', 'blockhash', 'gasLimit', 'gasUsed', 'miner'])
+    df['blocknumber'] = blocknumber
+    df['timestamp'] = timestamp
+    df['size'] = size
+    df['blockhash'] = blockhash
+    df['gasLimit'] = gasLimit
+    df['gasUsed'] = gasUsed
+    df['miner'] = miner
 
-#     st.dataframe(df)
-#     # st.json(dec_blocks)
+    st.dataframe(df)
+    # st.json(dec_blocks)
 
-#     transx_blockid = []
-#     trans_idx = []
-#     gas = []
-#     gas_price = []
-#     from_acct = []
-#     to_acct = []
-#     value = []
-#     type = []
+    transx_blockid = []
+    trans_idx = []
+    gas = []
+    gas_price = []
+    from_acct = []
+    to_acct = []
+    value = []
+    type = []
 
-#     for i in curr_txs_hash[0]:
-#         transx_blockid.append(int(i['blockNumber'], 16))
-#         trans_idx.append(int(i['transactionIndex'], 16))
-#         gas.append(int(i['gas'], 16))
-#         gas_price.append(int(i['gasPrice'], 16))
-#         from_acct.append(i['from'])
-#         to_acct.append(i['to'])
-#         value.append(int(i['value'], 16))
-#         type.append(int(i['type'], 16))
+    for i in curr_txs_hash[0]:
+        transx_blockid.append(int(i['blockNumber'], 16))
+        trans_idx.append(int(i['transactionIndex'], 16))
+        gas.append(int(i['gas'], 16))
+        gas_price.append(int(i['gasPrice'], 16))
+        from_acct.append(i['from'])
+        to_acct.append(i['to'])
+        value.append(int(i['value'], 16))
+        type.append(int(i['type'], 16))
 
-#     txdf = pd.DataFrame(
-#         columns=['transx_blockid', 'trans_idx', 'gas', 'gas_price', 'from_acct', 'to_acct', 'value (WEI)', 'type'])
-#     txdf['transx_blockid'] = transx_blockid
-#     txdf['trans_idx'] = trans_idx
-#     txdf['gas'] = gas
-#     txdf['gas_price'] = gas_price
-#     txdf['from_acct'] = from_acct
-#     txdf['to_acct'] = to_acct
-#     txdf['value (WEI)'] = value
-#     txdf['type'] = type
+    txdf = pd.DataFrame(
+        columns=['transx_blockid', 'trans_idx', 'gas', 'gas_price', 'from_acct', 'to_acct', 'value (WEI)', 'type'])
+    txdf['transx_blockid'] = transx_blockid
+    txdf['trans_idx'] = trans_idx
+    txdf['gas'] = gas
+    txdf['gas_price'] = gas_price
+    txdf['from_acct'] = from_acct
+    txdf['to_acct'] = to_acct
+    txdf['value (WEI)'] = value
+    txdf['type'] = type
 
-#     st.dataframe(txdf)
+    st.dataframe(txdf)
 
 if title == "Ripple: XRP":
 
