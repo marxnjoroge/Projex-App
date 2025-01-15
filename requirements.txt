@@ -69,7 +69,7 @@ pytz-deprecation-shim==0.1.0.post0
 # pywin32==302
 # pywinpty==1.1.6
 pyzmq==22.3.0
-requests==2.26.0
+requests==2.27.0
 Send2Trash==1.8.0
 setuptools-scm==6.3.2
 six==1.16.0
@@ -166,7 +166,6 @@ pytz-deprecation-shim==0.1.0.post0
 # pywin32==302
 # pywinpty==1.1.6
 pyzmq==22.3.0
-requests==2.26.0
 Send2Trash==1.8.0
 setuptools-scm==6.3.2
 six==1.16.0
