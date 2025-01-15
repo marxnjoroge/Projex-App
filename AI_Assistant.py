@@ -22,7 +22,7 @@ with sidebar:
 # st.title("AI Assistant")
 st.markdown(''':gray[Powered by:/~>]''' +title)
 st.markdown("This chat is geared toward scientific inquiry.  Enter a query below and learn something new.")
-st.divider()
+# st.divider()
 
 client = Groq(api_key=st.secrets.get("GROQ_API_KEY"))
 

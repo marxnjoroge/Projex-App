@@ -195,7 +195,7 @@ def get_logo_html(scale_percentage=100, background="transparent"):
 st.markdown('<div class="logo-wrapper">', unsafe_allow_html=True)
 # Render the full-size animated logo
 components.html(get_logo_html(scale_percentage=100), height=120)
-st.divider()
+# st.divider()
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Sidebar setup
