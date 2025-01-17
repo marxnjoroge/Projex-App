@@ -220,4 +220,4 @@ pg.run()
 
 with sidebar:
    st.write("---")
-   st.caption("Marx Njoroge.2025")
+   st.caption("Marx Njoroge ©2025")
