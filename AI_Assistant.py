@@ -5,16 +5,16 @@ import streamlit.components.v1 as components
 sidebar = st.sidebar
 model = ""
 sidebar.subheader("Large Language Models")
-ident2 = "lmodel"
+ident2 = "langmodel"
 
 with sidebar:
-  title = st.sidebar.radio("Popular Models:", ("Meta LlaMa3", "Google gemma2-9b-it", "Mistral mixtral-8x7b-32768"), key = ident2)
-
-  if title == 'Meta LlaMa3':
-      model = "llama3-8b-8192"
+  title = st.sidebar.radio("Popular Models:", ("Google gemma2-9b-it", "Meta LlaMa3", "Mistral mixtral-8x7b-32768"), key = ident2)
 
   if title == 'Google gemma2-9b-it':
       model = "gemma2-9b-it"
+
+  if title == 'Meta LlaMa3':
+      model = "llama3-8b-8192"
 
   if title == 'Mistral mixtral-8x7b-32768':
       model = 'mixtral-8x7b-32768'
