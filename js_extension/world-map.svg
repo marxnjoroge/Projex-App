@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <!-- Simplified world map outline -->
+  <path fill="#e0e0e0" stroke="#999" stroke-width="0.5" d="M150,100 C200,80 250,90 300,85 L400,90 C450,85 500,95 550,90 L650,95 C700,90 750,100 800,95 L850,100 V300 C800,295 750,305 700,300 L600,305 C550,300 500,310 450,305 L350,310 C300,305 250,315 200,310 L150,315 V100 Z"/>
+  <!-- Add more path elements for other continents -->
+</svg>

@@ -8,7 +8,7 @@ sidebar.subheader("Large Language Models")
 ident2 = "langmodel"
 
 with sidebar:
-  title = st.sidebar.radio("Popular Models:", ("Google gemma2-9b-it", "Meta LlaMa3", "Mistral mixtral-8x7b-32768"), key = ident2)
+  title = st.sidebar.radio("Popular Models:", ("Google gemma2-9b-it", "Meta LlaMa3", "Mistral mixtral-8x7b-32768", "Deepseek-R1-Distill-70b"), key = ident2)
 
   if title == 'Google gemma2-9b-it':
       model = "gemma2-9b-it"
@@ -18,6 +18,9 @@ with sidebar:
 
   if title == 'Mistral mixtral-8x7b-32768':
       model = 'mixtral-8x7b-32768'
+
+  if title == 'Deepseek-R1-Distill-70b':
+      model = 'deepseek-r1-distill-llama-70b'  
 
 # st.title("AI Assistant")
 st.markdown(''':gray[Powered by:/~>]''' +title)
