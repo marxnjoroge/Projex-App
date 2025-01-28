@@ -104,48 +104,50 @@ if title == 'Merge':
                 "to javascript in order to render it to html.")
     st.write("**Note:** sorting more values takes longer to render.")
 
-    alg = 2
-    cache = n * 10
-    title = "Merge Sort"
-    array = [i + 1 for i in range(n)]
-    random.shuffle(array)
-    algo = mergeSort(array)
+    with st.status("Loading", expanded=True, state='running'):
 
-    # Initialize fig
-    plt.rcParams["figure.figsize"] = (7, 4)
-    plt.rcParams["font.size"] = 8
-    # with _lock:
-    fig, ax = plt.subplots()
-    ax.set_title(title)
+        alg = 2
+        cache = n * 10
+        title = "Merge Sort"
+        array = [i + 1 for i in range(n)]
+        random.shuffle(array)
+        algo = mergeSort(array)
 
-    bar_rec = ax.bar(range(len(array)), array, align='edge')
+        # Initialize fig
+        plt.rcParams["figure.figsize"] = (7, 4)
+        plt.rcParams["font.size"] = 8
+        # with _lock:
+        fig, ax = plt.subplots()
+        ax.set_title(title)
 
-    ax.set_xlim(0, n)
-    ax.set_ylim(0, int(n * 1.06))
+        bar_rec = ax.bar(range(len(array)), array, align='edge')
 
-    text = ax.text(0.02, 0.95, "0", transform=ax.transAxes)
+        ax.set_xlim(0, n)
+        ax.set_ylim(0, int(n * 1.06))
 
-    epochs = [0]
+        text = ax.text(0.02, 0.95, "0", transform=ax.transAxes)
 
-
-    def init():
-        ax.bar(range(len(array)), array, align='edge')
-
-    # @st.cache
-    def update_plot(array, rect, epochs):
-        for rect, val in zip(rect, array):
-            rect.set_height(val)
-            rect.set_color("#cc00cc")
-        text.set_text("No. of operations: {}".format(epochs[0]))
-        epochs[0] += 1
-
-        return bar_rec,
+        epochs = [0]
 
 
-    anima = anim.FuncAnimation(fig, update_plot, fargs=(bar_rec, epochs), frames=algo, save_count=cache, interval=20,
-                                    repeat=False)
+        def init():
+            ax.bar(range(len(array)), array, align='edge')
 
-    components.html(anima.to_jshtml(), height=1000)
+        # @st.cache
+        def update_plot(array, rect, epochs):
+            for rect, val in zip(rect, array):
+                rect.set_height(val)
+                rect.set_color("#cc00cc")
+            text.set_text("No. of operations: {}".format(epochs[0]))
+            epochs[0] += 1
+
+            return bar_rec,
+
+
+        anima = anim.FuncAnimation(fig, update_plot, fargs=(bar_rec, epochs), frames=algo, save_count=cache, interval=20,
+                                        repeat=False)
+
+        components.html(anima.to_jshtml(), height=1000)
 
 if title == 'Quick':
     st.subheader(title)
@@ -156,50 +158,52 @@ if title == 'Quick':
                 "to javascript in order to render it to html.")
     st.write("**Note:** sorting more values takes longer to render.")
     
-    alg = 3
-    cache = 500
-    title = "Quick Sort"
-    array = [i + 1 for i in range(n)]
-    random.shuffle(array)
-    algo = quickSort(array, 0, len(array) - 1)
+    with st.status("Loading", expanded=True, state='running'):
 
-    # Initialize fig
-    # with _lock:
-    plt.rcParams["figure.figsize"] = (7, 4)
-    plt.rcParams["font.size"] = 8
-    fig, ax = plt.subplots()
-    ax.set_title(title)
+        alg = 3
+        cache = 500
+        title = "Quick Sort"
+        array = [i + 1 for i in range(n)]
+        random.shuffle(array)
+        algo = quickSort(array, 0, len(array) - 1)
 
-    bar_rec = ax.bar(range(len(array)), array, align='edge')
+        # Initialize fig
+        # with _lock:
+        plt.rcParams["figure.figsize"] = (7, 4)
+        plt.rcParams["font.size"] = 8
+        fig, ax = plt.subplots()
+        ax.set_title(title)
 
-    ax.set_xlim(0, n)
-    ax.set_ylim(0, int(n * 1.06))
+        bar_rec = ax.bar(range(len(array)), array, align='edge')
 
-    text = ax.text(0.02, 0.95, "0", transform=ax.transAxes)
+        ax.set_xlim(0, n)
+        ax.set_ylim(0, int(n * 1.06))
 
-    epochs = [0]
+        text = ax.text(0.02, 0.95, "0", transform=ax.transAxes)
 
-
-    def init():
-        ax.bar(range(len(array)), array, align='edge', color="#0033ff")
-
-    # @st.cache
-    def update_plot(array, rect, epochs):
-        for rect, val in zip(rect, array):
-            rect.set_height(val)
-            rect.set_color("#33cccc")
-        text.set_text("No. of operations: {}".format(epochs[0]))
-        epochs[0] += 1
-
-        return bar_rec,
+        epochs = [0]
 
 
-    anima = anim.FuncAnimation(fig, update_plot, fargs=(bar_rec, epochs), frames=algo, save_count=cache, interval=20,
-                                repeat=False)
-    # plt.show()
-    # st.pyplot(plt)
+        def init():
+            ax.bar(range(len(array)), array, align='edge', color="#0033ff")
 
-    components.html(anima.to_jshtml(), height=1000)
+        # @st.cache
+        def update_plot(array, rect, epochs):
+            for rect, val in zip(rect, array):
+                rect.set_height(val)
+                rect.set_color("#33cccc")
+            text.set_text("No. of operations: {}".format(epochs[0]))
+            epochs[0] += 1
+
+            return bar_rec,
+
+
+        anima = anim.FuncAnimation(fig, update_plot, fargs=(bar_rec, epochs), frames=algo, save_count=cache, interval=20,
+                                    repeat=False)
+        # plt.show()
+        # st.pyplot(plt)
+
+        components.html(anima.to_jshtml(), height=1000)
 
 if title == 'Bubble':
     st.subheader(title)
@@ -210,35 +214,37 @@ if title == 'Bubble':
                 "to javascript in order to render it to html.")
     st.write("** Note:** sorting more values takes longer to render.")
 
-    alg = 1
-    cache = n * (n**1/2)
-    title = "Bubble Sort"
-    array = [i + 1 for i in range(n)]
-    random.shuffle(array)
-    algo = bubbleSort(array)
+    with st.status("Loading", expanded=True, state='running'):
 
-    # Initialize fig with mathplotlib:
-    data = np.random.randint(1, 100, size=n)
+        alg = 1
+        cache = n * (n**1/2)
+        title = "Bubble Sort"
+        array = [i + 1 for i in range(n)]
+        random.shuffle(array)
+        algo = bubbleSort(array)
 
-    # Create figure and axes
-    fig, ax = plt.subplots()
-    bars = ax.bar(range(len(data)), data, color='blue')
+        # Initialize fig with mathplotlib:
+        data = np.random.randint(1, 100, size=n)
 
-    # Function to update bar positions for each frame
-    def animate(i):
-        global data
-        for j in range(len(data) - i - 1):
-            if data[j] > data[j + 1]:
-                data[j], data[j + 1] = data[j + 1], data[j]
-                bars[j].set_height(data[j])
-                bars[j + 1].set_height(data[j + 1])
-        return bars
+        # Create figure and axes
+        fig, ax = plt.subplots()
+        bars = ax.bar(range(len(data)), data, color='blue')
 
-    # Create the animation
-    ani = anim.FuncAnimation(fig, animate, frames=len(data)-1, interval=50, blit=True)
+        # Function to update bar positions for each frame
+        def animate(i):
+            global data
+            for j in range(len(data) - i - 1):
+                if data[j] > data[j + 1]:
+                    data[j], data[j + 1] = data[j + 1], data[j]
+                    bars[j].set_height(data[j])
+                    bars[j + 1].set_height(data[j + 1])
+            return bars
 
-    # Display the animation using Streamlit
-    components.html(ani.to_jshtml(), height=800)
+        # Create the animation
+        ani = anim.FuncAnimation(fig, animate, frames=len(data)-1, interval=50, blit=True)
+
+        # Display the animation using Streamlit
+        components.html(ani.to_jshtml(), height=800)
 
 
     
