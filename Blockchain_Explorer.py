@@ -28,7 +28,7 @@ if title == "Bitcoin: BTC":
     st.markdown('''Feature updates coming are a search function for specific accounts, blocks, and transactions, multithreading 
                 and chain specific node requests to speed up API requests''')
 
-    with st.status("Loading", state='running'):
+    with st.status("Loading", expanded=True, state='running'):
 
         X_API_TOKEN = st.secrets["GETBLOCK_BTC_TOKEN"]
         headers = {
@@ -37,6 +37,7 @@ if title == "Bitcoin: BTC":
         
         btc_status_endpoint = "https://go.getblock.io/"+X_API_TOKEN
 
+        # @st.cache_data
         def get_latest_block():
 
             btc_status_params = {
@@ -149,7 +150,7 @@ if title == "Ethereum: ETH":
     st.write("""Using Getblock's Blockchain Node Provider for access to Ethereum network and data.""")
     st.write("""**Note:** Data returned from API calls are chain-specific.""")
 
-    with st.status("Loading", state='running'):
+    with st.status("Loading", expanded=True, state='running'):
           
         GETBLOCK_ETH_TOKEN = st.secrets["GETBLOCK_ETH_TOKEN"]
         GETBLOCK_ETH_URL = "https://go.getblock.io/"+GETBLOCK_ETH_TOKEN
@@ -341,7 +342,7 @@ if title == "Binance Smart Chain: BNB":
     st.write("""Using Getblock's Blockchain Node Provider for access to Binance Smart Chain network and data.""")
     st.write("""**Note:** Data returned from API calls are chain-specific.""")
 
-    with st.status("Loading", state='running'):
+    with st.status("Loading", expanded=True, state='running'):
 
         GETBLOCK_BSC_TOKEN = st.secrets["GETBLOCK_BSC_TOKEN"]
         GETBLOCK_BSC_URL = "https://go.getblock.io/"+GETBLOCK_BSC_TOKEN
@@ -465,7 +466,7 @@ if title == "Ripple: XRP":
     st.write("""Accessing XRP Ledger throuoh Ripple gateway nodes and APIs to the XRP chains, their proprietary network, protocols and each chain's data.""")
     st.write("""**Note:** Data returned from API calls are chain-specific.""")
 
-    with st.status("Loading", state='running'):
+    with st.status("Loading", expanded=True, state='running'):
 
         XRP_API_URL = "https://s1.ripple.com:51234/"
         xrp_headers = {
