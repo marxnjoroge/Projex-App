@@ -8,7 +8,7 @@ sidebar.subheader("Large Language Models")
 ident2 = "langmodel"
 
 with sidebar:
-  title = st.sidebar.radio("Popular Models:", ("Google gemma2-9b-it", "Meta LlaMa3", "Mistral mixtral-8x7b-32768"), key = ident2)
+  title = st.sidebar.radio("Popular Models:", ("Google gemma2-9b-it", "Meta LlaMa3", "Mistral mixtral-8x7b-32768", "Deepseek-R1-Distill-70b"), key = ident2)
 
   if title == 'Google gemma2-9b-it':
       model = "gemma2-9b-it"
@@ -19,6 +19,9 @@ with sidebar:
   if title == 'Mistral mixtral-8x7b-32768':
       model = 'mixtral-8x7b-32768'
 
+  if title == 'Deepseek-R1-Distill-70b':
+      model = 'deepseek-r1-distill-llama-70b'  
+  
 # st.title("AI Assistant")
 st.markdown(''':gray[Powered by:/~>]''' +title)
 st.markdown("This chat is geared toward scientific inquiry.  Enter a query below and learn something new.")
@@ -31,6 +34,12 @@ if "default_model" not in st.session_state:
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
+
+with sidebar:
+            def click_reset():
+                st.session_state["messages"] = []
+            
+            st.button(label="Reset Chat", on_click=click_reset, type="primary")
 
 # print(st.session_state)
 
@@ -62,6 +71,7 @@ if prompt := st.chat_input():
             stream = True,
         )
 
+        
         response = ""
 
         for chunk in completion:
@@ -69,3 +79,5 @@ if prompt := st.chat_input():
             response_text.markdown(response)
 
         st.session_state.messages.append({"role": "assistant", "content": response})
+
+        
